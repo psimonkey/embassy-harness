@@ -1,3 +1,6 @@
 [submodule "embassy"]
 	path = embassy
 	url = git@github.com:embassy-rs/embassy
+[submodule "esp-hal"]
+	path = esp-hal
+	url = git@github.com:esp-rs/esp-hal.git

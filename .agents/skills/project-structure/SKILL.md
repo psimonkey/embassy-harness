@@ -147,7 +147,18 @@ cargo test --target x86_64-apple-darwin
 ```
 
 **To Build Firmware (Device):**
-Use your standard build command (assuming `.cargo/config.toml` sets the default target).
+Use your standard build command (assuming the project's `.cargo/config.toml` sets the default target and runner). For example, an ESP32-C3 project can define:
+
+```toml
+[build]
+target = "riscv32imc-esp-esp32c3-none-elf"
+
+[target.'cfg(target_arch = "riscv32")']
+runner = "espflash flash --monitor"
+```
+
+Then you can run:
+
 ```bash
 cargo build
 # or

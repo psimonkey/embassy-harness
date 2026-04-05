@@ -2,7 +2,7 @@
 
 This file documents the available skills and standard operating procedures for agents working in this repository.
 
-The host system's target triple is `aarch64-apple-darwin`, and the embedded target for firmware development is `thumbv6m-none-eabi`.
+The host system's target triple is specified in host.md, and the embedded target for firmware development is specified in the AGENTS.md file in each project.  If details of the target are not found, assume it is `thumbv6m-none-eabi`.
 
 Don't use inline env vars, it breaks the harness. Export the env vars before running the command.
 
@@ -11,9 +11,9 @@ Specific commands have been whitelisted so where possible use the exact command 
 ## Standard Operating Procedures
 
 * Most work should be performed within a project-specific sub-folder of the `projects/` directory. If it is not clear from the context which project you should be operating in, **ask the user** for clarification before proceeding.
-* Lean heavily on the examples (embassy/examples/rp/src/bin/*.rs) to guide your implementation.
-* There are also examples for other platforms (embassy/examples/*/src/bin/*.rs) that may be helpful for reference but remember you will need to adapt them to the RP2040.
-* As a fallback, you can also search the full Embassy project source code (embassy/**/*.rs).
+* Lean heavily on the examples (embassy/examples/rp/src/bin/*.rs for RP2040, esp-hal/examples/*/src/*.rs and esp-hal/examples/*/*/src/*.rs for ESP32) to guide your implementation.
+* There are also examples for other platforms (embassy/examples/*/src/bin/*.rs) that may be helpful for reference but remember you will need to adapt them to the correct target for each project.
+* As a fallback, you can also search the full Embassy project source code (embassy/**/*.rs) and ESP-HAL project source code (esp-hal/**/*.rs).
 
 ## Available Skills
 
@@ -29,16 +29,25 @@ Specific commands have been whitelisted so where possible use the exact command 
 - **File**: `.agents/skills/new-project/SKILL.md`
 - **Description**: Automates the creation of a new Embassy RP project.
     - Creates a folder in `projects/`.
-    - Copies configuration from `embassy/examples/rp`.
-    - Initializes `main.rs` from `blinky` example.
+    - Copies configuration from `embassy/examples/rp` or `esp-hal/examples/`.
+    - Initializes `main.rs` from a suitable example.
     - Updates `Cargo.toml` and workspace members.
+    - Create a AGENTS.md file for the project with information about the target board and anything else relevant to the project.
     - Applies the "Host-Based Unit Testing" project structure.
 
 ### Pico Firmware Development
 - **File**: `.agents/skills/pico-firmware/SKILL.md`
 - **Description**: Specific details for RP2040/Pico development.
     - Hardware details (Cortex-M0+, 264KB SRAM, 2MB Flash).
-    - GPIO function mappings reference (`gpio-functions.md`).
+    - GPIO function mappings reference (`boards/rp2040/gpio-functions.md`).
+    - Flashing instructions using `cargo run`.
+    - Troubleshooting connection issues (`killall probe-rs`).
+
+### ESP32 Firmware Development
+- **File**: `.agents/skills/esp32-firmware/SKILL.md`
+- **Description**: Specific details for ESP32 development.
+    - Various hardware types, depending on the variant of ESP32 being used.
+    - PIN mappings reference (`boards/*/pins.md`).
     - Flashing instructions using `cargo run`.
     - Troubleshooting connection issues (`killall probe-rs`).
 
@@ -55,5 +64,5 @@ Specific commands have been whitelisted so where possible use the exact command 
 - **Description**: Procedure for reviewing and improving firmware code.
     - Fix build warnings.
     - Check against best practices.
-    - Compare with `embassy/examples/rp` and other embassy sources.
+    - Compare with `embassy/examples/rp` or `esp-hal/examples/hello_world` and other embassy sources.
     - Refine and validate.

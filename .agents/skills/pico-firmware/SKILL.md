@@ -11,7 +11,7 @@ This skill covers the details of developing firmware for the Raspberry Pi Pico (
 
 The firmware is being developed for the Raspberry Pi Pico, which is based on the RP2040 microcontroller. The RP2040 features a dual-core ARM Cortex-M0+ processor, 264KB of SRAM, and support for various peripherals including GPIO, I2C, SPI, UART, and USB. The Pico board also includes 2MB of onboard flash memory for storing the firmware.
 
-The GPIO function mappings are detailed in gpio-functions.md.
+The GPIO function mappings are detailed in gpio-functions-rp2040.md.
 
 ## Flashing and Debugging
 
