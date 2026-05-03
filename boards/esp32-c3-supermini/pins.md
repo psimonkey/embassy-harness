@@ -4,7 +4,7 @@ Pin	Function
 GND	GND pin
 GPIO 0	General-purpose I/O, ADC1, PWM
 GPIO 1	General-purpose I/O, ADC1, PWM
-GPIO 2	General-purpose I/O ADC1, Strapping Pin (Boot Mode) (avoid for general use)
+GPIO 2	General-purpose I/O, ADC1, Strapping Pin (Boot Mode) (avoid for general use)
 GPIO 3	General-purpose I/O, PWM
 GPIO 4	General-purpose I/O, PWM, default SPI SCK pin
 GPIO 5	General-purpose I/O, PWM, default SPI MISO pin

@@ -51,8 +51,15 @@ Specific commands have been whitelisted so where possible use the exact command 
     - Flashing instructions using `cargo run`.
     - Troubleshooting connection issues (`killall probe-rs`).
 
-### Project Structure (Host-Based Unit Testing)
+### Project Structure (Simple)
 - **File**: `.agents/skills/project-structure/SKILL.md`
+- **Description**: Configures a project with a `no_std` firmware build.
+    - Splits code into `src/lib.rs` (logic) and `src/main.rs` (hardware/entry).
+    - Configures `Cargo.toml` to disable binary tests and use conditional dependencies.
+    - Adjusts `build.rs` to only link embedded artifacts for target builds.
+
+### Project Structure (Host-Based Unit Testing)
+- **File**: `.agents/skills/project-structure-host-debug/SKILL.md`
 - **Description**: Configures a project for host-based unit testing while maintaining a `no_std` firmware build.
     - Splits code into `src/lib.rs` (logic) and `src/main.rs` (hardware/entry).
     - Configures `Cargo.toml` to disable binary tests and use conditional dependencies.
